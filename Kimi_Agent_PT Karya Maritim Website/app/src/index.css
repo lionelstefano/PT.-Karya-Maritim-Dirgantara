@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap');
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --background: 180 60% 99%;
+    --foreground: 193 50% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 193 50% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 193 50% 15%;
+    --primary: 177 77% 41%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 177 46% 92%;
+    --secondary-foreground: 193 50% 15%;
+    --muted: 177 33% 94%;
+    --muted-foreground: 195 18% 38%;
+    --accent: 177 46% 92%;
+    --accent-foreground: 193 50% 15%;
+    --destructive: 6 100% 74%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 180 30% 88%;
+    --input: 180 30% 85%;
+    --ring: 177 77% 41%;
+    --radius: 1rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-foam text-ink font-body antialiased;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: #17B8B0;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 3px solid #0E8C86;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .shell {
+    @apply max-w-shell mx-auto px-5 sm:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-aqua text-white font-bold px-7 py-3.5
+      shadow-soft transition-all duration-200 hover:bg-aqua-deep hover:gap-3 hover:shadow-lift
+      active:scale-[0.97] cursor-pointer;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-white text-ink font-bold px-7 py-3.5
+      border border-ink/15 transition-all duration-200 hover:border-ink/35 hover:gap-3 active:scale-[0.97] cursor-pointer;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-aqua-deep;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+
+  /* Hide scrollbar for horizontal scrollers while keeping scroll */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
